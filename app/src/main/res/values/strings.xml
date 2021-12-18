@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">PhonePetest</string>
+    <string name="generic_message_for_error">An error occurred, please try again!</string>
+    <string name="new_feed">added new feed</string>
 </resources>

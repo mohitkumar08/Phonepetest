@@ -8,3 +8,7 @@ dependencyResolutionManagement {
 }
 rootProject.name = "PhonePetest"
 include ':app'
+include ':core'
+include ':genericresponse'
+include ':vmcore'
+include ':app:database'
