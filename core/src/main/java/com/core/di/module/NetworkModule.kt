@@ -1,9 +1,11 @@
 package com.core.di.module
 
+import com.core.ApiInterceptor
 import com.core.BuildConfig
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import dagger.Module
 import dagger.Provides
+import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -28,10 +30,12 @@ object NetworkModule {
     @Provides
     @Singleton
     fun provideOkhttpClient(
-        loggingInterceptor: HttpLoggingInterceptor
+        loggingInterceptor: HttpLoggingInterceptor,
+        apiInterceptor: ApiInterceptor
     ): OkHttpClient {
         return OkHttpClient().newBuilder().apply {
             addInterceptor(loggingInterceptor)
+                .addInterceptor(ApiInterceptor())
             connectTimeout(CONNECTION_TIMEOUT, TimeUnit.SECONDS)
             readTimeout(CONNECTION_TIMEOUT, TimeUnit.SECONDS)
         }.build()
